@@ -45,6 +45,18 @@ const getQuestionById = (
   }
 }
 
+// @desc    Show all questions
+// @param   GET /api/show-questions
+const showQuestions = (req: any, res: any) => {
+  const data: Array<Question> = JSON.parse(
+    fs.readFileSync(path.resolve(__dirname, "./data.json"))
+  )
+  res.send({
+    success: true,
+    data: data,
+  })
+}
+
 // @desc    Add a question to the pool of questions
 // @param   POST /api/add-question
 const addQuestion = (request: any, response: any) => {
@@ -114,4 +126,10 @@ const addVote = (request: any, response: any) => {
   }
 }
 
-export { getRandomQuestion, addQuestion, addVote, getQuestionById }
+export {
+  getRandomQuestion,
+  addQuestion,
+  addVote,
+  getQuestionById,
+  showQuestions,
+}

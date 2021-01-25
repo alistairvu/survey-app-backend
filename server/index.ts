@@ -3,6 +3,7 @@ import {
   addQuestion,
   addVote,
   getQuestionById,
+  showQuestions,
 } from "./controller/methods"
 const express = require("express")
 const path = require("path")
@@ -13,6 +14,7 @@ const port = process.env.PORT || 6960
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
+app.get("/api/show-questions", showQuestions)
 app.get("/api/get-question", getRandomQuestion)
 app.get("/api/get-question/:id", getQuestionById)
 app.post("/api/add-question", addQuestion)
